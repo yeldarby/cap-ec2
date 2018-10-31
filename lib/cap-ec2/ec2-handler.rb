@@ -97,7 +97,7 @@ module CapEC2
       @ec2.any? do |_, ec2|
         ec2.describe_instance_status(
           instance_ids: [instance.instance_id],
-          filters: [{ name: 'instance-status.status', values: %w(ok) }]
+          filters: [{ name: 'instance-status.status', values: %w(ok initializing) }]
         ).instance_statuses.length == 1
       end
     end
